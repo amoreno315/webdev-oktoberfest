@@ -23,11 +23,11 @@ function main(){
       <h1 class="splash__title">Oktoberfest Spiele</h1>
       <button>Start</button>
     </main>
-  `);
-  mainContainerElement.appendChild(SplashElement);
+    `);
+    mainContainerElement.appendChild(SplashElement);
 
-  splashButton = document.querySelector('button');
-  splashButton.addEventListener('click', handleSplashClick);
+    splashButton = document.querySelector('button');
+    splashButton.addEventListener('click', handleSplashClick);
 
 
   }
@@ -38,19 +38,51 @@ function main(){
   }
 
   // Game 
-
+  var game = null;
+  var handleGameOver = function (){
+    destroyGame();
+    buildGameOver(game.score);
+  }
   function buildGame(){
-
+    game = new Game(mainContainerElement);
+    game.onOver(handleGameOver);
   }
   function destroyGame(){
-
+    //parar despues de 30 segundos
+    game.destroy();
   }
+
+  //funcion para contar 30 segundos
+
   //  GameOver
-  function buildGameOver(){
+  var gameOverElement = null; 
+  var gameOverButton = null; 
+
+  var handleGameOverClick = function () {
+    destroyGameOver();
+    buildSplash();
+  }
+
+  function buildGameOver(score){
+    gameOverElement = buildDom(`
+    <main class="gameover container">
+      <h1>Game over</h1>
+      <p>Litros conseguidos: <span class="score"></span></p>
+      <button>Restart</button>
+      </main>
+    `);
+    mainContainerElement.appendChild(gameOverElement);
+  
+    gameOverButton = document.querySelector('button');
+    gameOverButton.addEventListener('click', handleGameOverClick);
+
+    var scoreElement = document.querySelector('.score');
+    scoreElement.innerText = score;
 
   }
   function destroyGameOver(){
-
+    gameOverButton.removeEventListener('click', handleGameOverClick);
+    gameOverElement.remove();
   }
   buildSplash();
 }

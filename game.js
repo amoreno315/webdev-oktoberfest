@@ -36,7 +36,9 @@ Game.prototype._init = function(){
   self.canvasElement = document.querySelector('.canvas');
 
   self.timeElement = self.gameElement.querySelector('.time .value');
+  //inicializar tiempo
   self.scoreElement = self.gameElement.querySelector('.score .value');
+
 
   self.width = self.canvasParentElement.clientWidth;
   self.height = self.canvasParentElement.clientHeight;
@@ -46,38 +48,97 @@ Game.prototype._init = function(){
 
   self.ctx = self.canvasElement.getContext('2d');
 
+
+  //idea Backlog: aumentar/disminuir tiempo de juego.
+  // var countDown = function(){
+  //   var timeoutId = window.setInterval(function(){
+  //     if (counter >= 0) {
+  //       displayCountdown.innerHTML = counter;
+  //       counter--;
+  //       return;
+  //     }
+      
+      
+  //     }, 200);
+  //     // llamar a handleGameOver(); del main.js
+  //     //clearInterval(timeoutId);
+  //     clearInterval(timeoutId);
+  //     self.onGameOverCallback();
+  //   }
+  // countDown();
+  
 }
+
+
 Game.prototype._startLoop = function(){
   var self = this;
 
   self.score = 0;
   //crear cerveza
+  //inicializar contador
+  self.counter = 5;
+
+  self.countDown = function (sec) {
+    self.counter -= sec;
+  }
+
   self.player = new Player(self.canvasElement);
   
   self.handleKeyDown = function (event){
-    //event ArrowLeft direction <-
-    //event ArrowRight direction ->
+    if (event.key === "ArrowLeft"){
+      console.log (event);
+      self.player.movimiento = -1;
+    }
+    if (event.key === "ArrowRight"){
+      console.log (event);
+      self.player.movimiento = 1;
+    }
+    
+    
   }
 
-  //addEventListener 'keyleft'
+  document.addEventListener('keydown', self.handleKeyDown);
+  console.log (event);
 
   function loop(){
     self._clearAll();
     self._updateAll();
     self._renderAll();
 
-    //if Time <30 
-    //else GameOver
+    if (self.counter > 0) {
+      requestAnimationFrame(loop);
+    } else {
+      self.gameover();
+    }
   }
+
+  requestAnimationFrame(loop);
+  self.intervalId = setInterval(function() {
+    self.countDown(1);
+  }, 1000);
 }
 
 Game.prototype._updateAll = function (){
   var self = this;
 
+  //self._spawnBier();
+  
+  self.player.update();
+  self._checkAllCollision();
+  self._updateUI();
+
+  //sumar volumen por colision
+
 }
 Game.prototype._renderAll = function () {
-  //bier[].render()
-  //player.render()
+  var self = this;
+
+
+  //self.bier.render();
+  //self.bier.forEach(function(item){
+    //item.render();
+  //})
+  self.player.render();
 }
 
 Game.prototype._clearAll = function (){
@@ -86,10 +147,31 @@ Game.prototype._clearAll = function (){
 
 Game.prototype._spawnBier = function() {
   //crear cerveza
+  var self = this;
+
+  if (Math.random() > 0.97){
+    var randomX = Math.random() * self.width * 0.8;
+    self.bier.push(new Bier(self.canvasElement, self.height, randomX));
+  }
 }
 
 Game.prototype._checkAllCollision = function (){
+  var self = this;
+  //comprobar colisiones y sumar volumen a score
 
+}
+
+Game.prototype._updateUI = function() {
+  var self = this; 
+
+  self.scoreElement.innerText= self.score;
+  self.timeElement.innerText= self.counter;
+}
+
+Game.prototype.onOver = function (callback) {
+  var self = this;
+
+  self.onGameOverCallback = callback;
 }
 
 Game.prototype.destroy = function (){
@@ -97,5 +179,11 @@ Game.prototype.destroy = function (){
 
   self.gameElement.remove();
   document.removeEventListener('keydown', self.handleKeyDown);
-  
 }
+
+Game.prototype.gameover = function () {
+  var self = this;
+  clearInterval(self.intervalId);
+  self.onGameOverCallback();
+}
+
