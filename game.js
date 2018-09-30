@@ -135,6 +135,13 @@ Game.prototype._updateAll = function (){
   });
 
   //borrar cerveza cuando se sale del canvas
+  self.bier = self.bier.filter(function(item){
+    if(item.onTheFloor()){
+      console.log ('borra');
+      return false;
+    }
+    return true;
+  });
 
   //self.player.update(); //mueve el jugador automaticamente
   self._checkAllCollision();
@@ -177,7 +184,14 @@ Game.prototype._spawnBier = function() {
 Game.prototype._checkAllCollision = function (){
   var self = this;
   //comprobar colisiones y sumar volumen a score
-
+  // si colision: self.player.volJarra += self.bier.volumenBier;
+  self.bier.forEach (function(item, idx){
+    if (self.player.checkCollision(item)){
+        self.bier.splice(idx, 1);
+        self.score += item.volumenBier;
+        
+    }
+  });
 }
 
 Game.prototype._updateUI = function() {

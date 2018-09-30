@@ -33,10 +33,21 @@ Player.prototype.fullJarra = function (){
   var self = this;
 }
 
-Player.prototype.checkCollision = function (){
+Player.prototype.checkCollision = function (object){
   var self = this;
+  
+  if (self.y === object.y + object.size){
+    return true; 
+
+  }
+    return false;
 }
 
+// Player.prototype.collided = function() {
+//   var self = this;
+//   self.volJarra += 1; //añadir el volumenBier de Bier
+// }
 Player.prototype._checkLimitis = function (){
   var self = this;
+  //impedir avanzar más alla del limite 
 }

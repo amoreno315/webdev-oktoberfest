@@ -34,3 +34,9 @@ Bier.prototype.render = function () {
   
 }
 
+Bier.prototype.onTheFloor = function() {
+  var self = this;
+  //console.log ((self.y + self.size) > self.ctx.height);
+  return (self.y + self.size) > self.ctx.height;
+}
+
