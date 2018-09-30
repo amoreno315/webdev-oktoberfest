@@ -75,8 +75,9 @@ Game.prototype._startLoop = function(){
 
   self.score = 0;
   //crear cerveza
-  //inicializar contador
-  self.counter = 5;
+  self.bier = [];
+  //inicializar contador, tiempo de juego
+  self.counter = 20;
 
   self.countDown = function (sec) {
     self.counter -= sec;
@@ -87,18 +88,23 @@ Game.prototype._startLoop = function(){
   self.handleKeyDown = function (event){
     if (event.key === "ArrowLeft"){
       console.log (event);
-      self.player.movimiento = -1;
+      self.player.movimiento = -20;
+      self.player.update();
+     console.log(self.player.movimiento) // = cambiamos la posicion x del jugador hacía la izquierda
     }
     if (event.key === "ArrowRight"){
       console.log (event);
-      self.player.movimiento = 1;
+      
+      self.player.movimiento = 20; //cambiamos la posicion x del jugador hacía la derecha
+      self.player.update();
+      console.log(self.player.movimiento);
     }
     
     
   }
 
   document.addEventListener('keydown', self.handleKeyDown);
-  console.log (event);
+ 
 
   function loop(){
     self._clearAll();
@@ -111,7 +117,7 @@ Game.prototype._startLoop = function(){
       self.gameover();
     }
   }
-
+  //cada segundo ejecuta un setInterval que actualiza el contador de tiempo
   requestAnimationFrame(loop);
   self.intervalId = setInterval(function() {
     self.countDown(1);
@@ -121,9 +127,16 @@ Game.prototype._startLoop = function(){
 Game.prototype._updateAll = function (){
   var self = this;
 
-  //self._spawnBier();
-  
-  self.player.update();
+  self._spawnBier();
+
+  self.bier.forEach(function(item){
+    item.update();
+   
+  });
+
+  //borrar cerveza cuando se sale del canvas
+
+  //self.player.update(); //mueve el jugador automaticamente
   self._checkAllCollision();
   self._updateUI();
 
@@ -135,24 +148,31 @@ Game.prototype._renderAll = function () {
 
 
   //self.bier.render();
-  //self.bier.forEach(function(item){
-    //item.render();
-  //})
+  self.bier.forEach(function(item) {
+    item.render();
+  })
+
   self.player.render();
 }
 
 Game.prototype._clearAll = function (){
+  var self = this;
+  //self.ctx.clearRect(0,0, self.width, self.height);
   //limpiar cervezaOut
+  self.ctx.clearRect(0,0,self.width, self.height);
 }
 
 Game.prototype._spawnBier = function() {
   //crear cerveza
   var self = this;
 
-  if (Math.random() > 0.97){
-    var randomX = Math.random() * self.width * 0.8;
-    self.bier.push(new Bier(self.canvasElement, self.height, randomX));
-  }
+  // if (Math.random() > 0.97){
+  //   var randomX = Math.random() * self.width * 0.8;
+  //   self.bier.push(new Bier(self.canvasElement, self.width, randomX));
+  //   console.log(self.bier);
+  //}
+  var randomX = Math.random() * self.width * 0.8;
+  self.bier.push(new Bier(self.canvasElement, self.width, randomX));
 }
 
 Game.prototype._checkAllCollision = function (){

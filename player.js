@@ -7,14 +7,21 @@ function Player(canvas){
   self.y = self.ctx.canvas.height - self.size;
   //self.color = blue;
   self.direction = 0; 
-  self.movimiento; // -1 se mueve a la izquiera, 1 se mueve a la derecha
+  self.movimiento = 0; // -1 se mueve a la izquiera, 1 se mueve a la derecha
   self.volJarra;
 }
 Player.prototype.update = function (){
   var self = this;
-  self.x = self.x + self.movimiento;
-  
+  self.x = self.x + self.movimiento; 
+  self.ctx.fillRect(self.x + self.movimiento, self.y, self.size, self.size+10);
 
+}
+Player.prototype.movLeft = function (){
+  var self = this;
+
+}
+Player.prototype.movRight = function (){
+  var self = this; 
 }
 
 Player.prototype.render = function (){
