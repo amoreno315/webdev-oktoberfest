@@ -166,13 +166,12 @@ Game.prototype._spawnBier = function() {
   //crear cerveza
   var self = this;
 
-  // if (Math.random() > 0.97){
-  //   var randomX = Math.random() * self.width * 0.8;
-  //   self.bier.push(new Bier(self.canvasElement, self.width, randomX));
-  //   console.log(self.bier);
-  //}
-  var randomX = Math.random() * self.width * 0.8;
-  self.bier.push(new Bier(self.canvasElement, self.width, randomX));
+  if (Math.random() > 0.90){
+    var randomX = Math.random() * self.width * 0.8;
+    self.bier.push(new Bier(self.canvasElement, randomX, 0));
+    console.log(self.bier);
+  }
+
 }
 
 Game.prototype._checkAllCollision = function (){
