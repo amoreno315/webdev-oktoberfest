@@ -32,3 +32,13 @@ Water.prototype.waterOnTheFloor = function (){
   var self = this; 
   return ((self.y + self.size) > self.ctx.canvas.height);
 }
+// Water.prototype.checkCollision = function (object){
+//   var self = this;
+  
+//   if (self.y === object.y + object.size){
+//     //&& ((self.x + self.size)>object.x)
+//     return true; 
+
+//   }
+//     return false;
+// }

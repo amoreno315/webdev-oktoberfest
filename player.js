@@ -2,15 +2,16 @@ function Player(canvas){
   var self = this;
 
   self.ctx = canvas.getContext('2d');
-  self.size = 50;
+  self.size = 100;
   self.x = (self.ctx.canvas.width) / 2 - (self.size)/2;
   self.y = self.ctx.canvas.height - self.size;
   //self.color = blue;
   self.direction = 0; 
   self.movimiento = 0; // -1 se mueve a la izquiera, 1 se mueve a la derecha
   self.volJarra;
-  var img = new Image();
-  img.src ='./images/jugador.png';
+  self.img = document.createElement('img');
+  self.img.src ='./images/jugador150.png';
+
   
   
 }
@@ -19,8 +20,8 @@ Player.prototype.update = function (){
   
   self.x = self.x + self.movimiento; 
   
-  self.ctx.fillRect(self.x + self.movimiento, self.y, self.size, self.size+10);
-
+  //self.ctx.fillRect(self.x + self.movimiento, self.y, self.size, self.size+10);
+  
 
 }
 Player.prototype.moveLeft = function (){
@@ -30,23 +31,24 @@ Player.prototype.moveLeft = function (){
     self.movimiento = self.x *-1;
     return true;
   }
-  self.movimiento = -20;
+  self.movimiento = -25;
 
 }
 Player.prototype.moveRight = function (){
   var self = this; 
-  if ((self.x + self.size + self.movimiento + 20) > self.ctx.canvas.width){
+  if ((self.x + self.size + self.movimiento + 25) > self.ctx.canvas.width){
     self.movimiento =  self.ctx.canvas.width - (self.x + self.size);
     return true;
   }
-  self.movimiento = 20;
+  self.movimiento = 25;
 }
 
 Player.prototype.render = function (){
   var self = this;
-  self.ctx.fillStyle = '#45362F';
+  //self.ctx.fillStyle = '#45362F';
   //self.ctx.drawImage(self.img,0,0,100,86,self.x, self.y,100,100);
-  self.ctx.fillRect(self.x, self.y, self.size, self.size+10);
+  //self.ctx.fillRect(self.x, self.y, self.size, self.size+10);
+  self.ctx.drawImage(self.img, self.x, self.y, self.size, self.size);
 }
 
 Player.prototype.fullJarra = function (){
@@ -55,8 +57,13 @@ Player.prototype.fullJarra = function (){
 
 Player.prototype.checkCollision = function (object){
   var self = this;
+  console.log(object.y)
+  var collTop = self.y < object.y + object.size;
+  var collLeft = object.x > self.x;
+  var collRight = object.x < self.x + self.size;
   
-  if (self.y === object.y + object.size){
+  if (collTop && collLeft && collRight){
+    //&& ((self.x + self.size)>object.x)
     return true; 
 
   }

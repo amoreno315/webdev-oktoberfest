@@ -187,7 +187,7 @@ Game.prototype._spawnBier = function() {
   //crear cerveza
   var self = this;
 
-  if (Math.random() > 0.90){
+  if (Math.random() > 0.95){
     var randomX = Math.random() * self.width * 0.8;
     self.bier.push(new Bier(self.canvasElement, randomX, 0));
     console.log(self.bier);
@@ -207,18 +207,17 @@ Game.prototype._checkAllCollision = function (){
   var self = this;
   //comprobar colisiones y sumar volumen a score
   // si colision: self.player.volJarra += self.bier.volumenBier;
-  self.bier.forEach (function(item, idx){
+  self.bier.forEach(function(item, idx){
     if (self.player.checkCollision(item)){
         self.bier.splice(idx, 1);
         self.score += item.volumenBier;
-        
     }
   });
 
   self.water.forEach (function(item, idx){
     if (self.player.checkCollision(item)){
         self.water.splice(idx, 1);
-        self.counter = self.counter - 10;;
+        self.counter -= 10;;
         
     }
   });
