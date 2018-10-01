@@ -87,20 +87,17 @@ Game.prototype._startLoop = function(){
   
   self.handleKeyDown = function (event){
     if (event.key === "ArrowLeft"){
-      console.log (event);
-      self.player.movimiento = -20;
+      //console.log (event);
+      self.player.moveLeft();
       self.player.update();
-     console.log(self.player.movimiento) // = cambiamos la posicion x del jugador hacía la izquierda
+     //console.log(self.player.movimiento) // = cambiamos la posicion x del jugador hacía la izquierda
     }
     if (event.key === "ArrowRight"){
-      console.log (event);
-      
-      self.player.movimiento = 20; //cambiamos la posicion x del jugador hacía la derecha
+      //console.log (event);
+      self.player.moveRight();
       self.player.update();
-      console.log(self.player.movimiento);
+      //console.log(self.player.movimiento);
     }
-    
-    
   }
 
   document.addEventListener('keydown', self.handleKeyDown);

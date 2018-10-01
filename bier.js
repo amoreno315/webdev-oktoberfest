@@ -9,9 +9,10 @@ function Bier(canvas, x, y){
 
   self.x = x;
   self.y = y;
-  self.size = Math.floor(Math.random() * 10) + 1;
+  self.size = Math.floor(Math.random() * 10) + 3;
   self.velocidad = 3;
-  self.volumenBier = Math.floor(Math.random()*15)+1;
+  //self.volumenBier = Math.floor(Math.random()*5)+1;
+  self.volumenBier = Math.floor(self.size/3);
   self.color = bierColors[Math.floor(Math.random() * bierColors.length)];
   self.ctx = canvas.getContext('2d');
 }
@@ -37,6 +38,6 @@ Bier.prototype.render = function () {
 Bier.prototype.onTheFloor = function() {
   var self = this;
   //console.log ((self.y + self.size) > self.ctx.height);
-  return (self.y + self.size) > self.ctx.height;
+  return ((self.y + self.size) > self.ctx.canvas.height);
 }
 
