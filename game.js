@@ -76,14 +76,16 @@ Game.prototype._startLoop = function(){
   self.score = 0;
   //crear cerveza
   self.bier = [];
+  self.water = [];
   //inicializar contador, tiempo de juego
-  self.counter = 20;
+  self.counter = 30;
 
   self.countDown = function (sec) {
     self.counter -= sec;
   }
 
   self.player = new Player(self.canvasElement);
+  
   
   self.handleKeyDown = function (event){
     if (event.key === "ArrowLeft"){
@@ -125,8 +127,13 @@ Game.prototype._updateAll = function (){
   var self = this;
 
   self._spawnBier();
+  self._spawnWater();
 
   self.bier.forEach(function(item){
+    item.update();
+   
+  });
+  self.water.forEach(function(item){
     item.update();
    
   });
@@ -135,6 +142,13 @@ Game.prototype._updateAll = function (){
   self.bier = self.bier.filter(function(item){
     if(item.onTheFloor()){
       console.log ('borra');
+      return false;
+    }
+    return true;
+  });
+  self.water = self.water.filter(function(item){
+    if(item.waterOnTheFloor()){
+      //console.log ('borra');
       return false;
     }
     return true;
@@ -153,6 +167,9 @@ Game.prototype._renderAll = function () {
 
   //self.bier.render();
   self.bier.forEach(function(item) {
+    item.render();
+  })
+  self.water.forEach(function(item) {
     item.render();
   })
 
@@ -177,6 +194,14 @@ Game.prototype._spawnBier = function() {
   }
 
 }
+Game.prototype._spawnWater = function(){
+  var self = this; 
+
+  if (Math.random()> 0.99){
+    var randomWX = Math.random() * self.width * 0.8;
+    self.water.push (new Water(self.canvasElement, randomWX, 0));
+  }
+}
 
 Game.prototype._checkAllCollision = function (){
   var self = this;
@@ -186,6 +211,14 @@ Game.prototype._checkAllCollision = function (){
     if (self.player.checkCollision(item)){
         self.bier.splice(idx, 1);
         self.score += item.volumenBier;
+        
+    }
+  });
+
+  self.water.forEach (function(item, idx){
+    if (self.player.checkCollision(item)){
+        self.water.splice(idx, 1);
+        self.counter = self.counter - 10;;
         
     }
   });

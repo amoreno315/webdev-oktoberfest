@@ -9,6 +9,10 @@ function Player(canvas){
   self.direction = 0; 
   self.movimiento = 0; // -1 se mueve a la izquiera, 1 se mueve a la derecha
   self.volJarra;
+  var img = new Image();
+  img.src ='./images/jugador.png';
+  
+  
 }
 Player.prototype.update = function (){
   var self = this;
@@ -41,6 +45,7 @@ Player.prototype.moveRight = function (){
 Player.prototype.render = function (){
   var self = this;
   self.ctx.fillStyle = '#45362F';
+  //self.ctx.drawImage(self.img,0,0,100,86,self.x, self.y,100,100);
   self.ctx.fillRect(self.x, self.y, self.size, self.size+10);
 }
 
