@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -15,17 +16,37 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p{
-  font-family: 'UnifrakturMaguntia', cursive;
+  font-family: 'MedievalSharp', cursive;
   margin: 0;
   padding: 0;
+  color: #E8212D;
+  font-size: 2em;
+}
+
+span {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.5em;
+  margin: 10px;
+}
+button{
+  width: 150px;
+  height: 40px;
+  background: linear-gradient(45deg, #920F15, #E8212D);
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: 'MedievalSharp', cursive;
 }
 
 /* --- layout --- */
 
 #main-container {
+  padding-bottom: 80px;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background-image: url('./images/oktoberfest-bckground.png');
   background-size: 100% 100%;

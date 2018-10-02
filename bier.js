@@ -9,12 +9,15 @@ function Bier(canvas, x, y){
 
   self.x = x;
   self.y = y;
-  self.size = Math.floor(Math.random() * 10) + 3;
+  self.size = Math.floor(Math.random() * 40) +15;
   self.velocidad = 3;
   //self.volumenBier = Math.floor(Math.random()*5)+1;
   self.volumenBier = Math.floor(self.size/3);
   self.color = bierColors[Math.floor(Math.random() * bierColors.length)];
   self.ctx = canvas.getContext('2d');
+  self.img = document.createElement('img');
+  self.img.src ='./images/vaso-cerveza.png';
+
 }
 
 Bier.prototype.update = function () {
@@ -29,9 +32,9 @@ Bier.prototype.render = function () {
 
   
 
-  self.ctx.fillStyle = self.color;
-  self.ctx.fillRect(self.x, self.y, self.size, self.size);
-
+  // self.ctx.fillStyle = self.color;
+  // self.ctx.fillRect(self.x, self.y, self.size, self.size);
+  self.ctx.drawImage(self.img, self.x, self.y, self.size, self.size);
   
 }
 

@@ -20,7 +20,9 @@ function main(){
   function buildSplash(){
     SplashElement = buildDom(`
     <main class="splash container">
-      <h1 class="splash__title">Oktoberfest Spiele</h1>
+      <h1 class="splash__title">Instrucciones</h1>
+      <p class="splash__instructions">Mueve al jugador
+      para recoger cerveza y bretzel, intenta evitar las gotas de agua</p>
       <button>Start</button>
     </main>
     `);

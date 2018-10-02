@@ -77,6 +77,7 @@ Game.prototype._startLoop = function(){
   //crear cerveza
   self.bier = [];
   self.water = [];
+  self.bretzel = [];
   //inicializar contador, tiempo de juego
   self.counter = 30;
 
@@ -128,6 +129,7 @@ Game.prototype._updateAll = function (){
 
   self._spawnBier();
   self._spawnWater();
+  self._spawnBretzel();
 
   self.bier.forEach(function(item){
     item.update();
@@ -136,6 +138,9 @@ Game.prototype._updateAll = function (){
   self.water.forEach(function(item){
     item.update();
    
+  });
+  self.bretzel.forEach(function(item){
+    item.update();
   });
 
   //borrar cerveza cuando se sale del canvas
@@ -153,6 +158,12 @@ Game.prototype._updateAll = function (){
     }
     return true;
   });
+  self.bretzel = self.bretzel.filter(function(item){
+    if(item.bretzelOnTheFloor()){
+      return false;
+    }
+    return true;
+  })
 
   //self.player.update(); //mueve el jugador automaticamente
   self._checkAllCollision();
@@ -168,10 +179,13 @@ Game.prototype._renderAll = function () {
   //self.bier.render();
   self.bier.forEach(function(item) {
     item.render();
-  })
+  });
   self.water.forEach(function(item) {
     item.render();
-  })
+  });
+  self.bretzel.forEach(function(item){
+    item.render();
+  });
 
   self.player.render();
 }
@@ -197,9 +211,18 @@ Game.prototype._spawnBier = function() {
 Game.prototype._spawnWater = function(){
   var self = this; 
 
-  if (Math.random()> 0.99){
+  if (Math.random()> 0.97){
     var randomWX = Math.random() * self.width * 0.8;
     self.water.push (new Water(self.canvasElement, randomWX, 0));
+  }
+}
+
+Game.prototype._spawnBretzel = function(){
+  var self = this;
+
+  if (Math.random()>0.995){
+    var randomBX = Math.random() * self.width * 0.8;
+    self.bretzel.push (new Bretzel(self.canvasElement, randomBX, 0));
   }
 }
 
@@ -217,7 +240,15 @@ Game.prototype._checkAllCollision = function (){
   self.water.forEach (function(item, idx){
     if (self.player.checkCollision(item)){
         self.water.splice(idx, 1);
-        self.counter -= 10;;
+        self.counter -= 10;
+        
+    }
+  });
+
+  self.bretzel.forEach (function(item, idx){
+    if (self.player.checkCollision(item)){
+        self.bretzel.splice(idx, 1);
+        self.counter += 10;
         
     }
   });

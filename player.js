@@ -31,22 +31,22 @@ Player.prototype.moveLeft = function (){
     self.movimiento = self.x *-1;
     return true;
   }
-  self.movimiento = -25;
+  self.movimiento = -30;
 
 }
 Player.prototype.moveRight = function (){
   var self = this; 
-  if ((self.x + self.size + self.movimiento + 25) > self.ctx.canvas.width){
+  if ((self.x + self.size + self.movimiento + 30) > self.ctx.canvas.width){
     self.movimiento =  self.ctx.canvas.width - (self.x + self.size);
     return true;
   }
-  self.movimiento = 25;
+  self.movimiento = 30;
 }
 
 Player.prototype.render = function (){
   var self = this;
   //self.ctx.fillStyle = '#45362F';
-  //self.ctx.drawImage(self.img,0,0,100,86,self.x, self.y,100,100);
+ 
   //self.ctx.fillRect(self.x, self.y, self.size, self.size+10);
   self.ctx.drawImage(self.img, self.x, self.y, self.size, self.size);
 }

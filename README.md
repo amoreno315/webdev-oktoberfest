@@ -3,8 +3,9 @@
 ## Description
 Durante la Oktoberfest nuestro jugador tendrá que rellenar jarras de cerveza y servilas en la mesa. 
 El juegador deberá coger una jarra e ir rellenandola con las gotas de cerveza que van cayendo desde la parte superior, cuando la jarra este llena, deberá dejar la jarra de nuevo en la mesa y coger otra vacia. 
-La cerveza irá cayendo de la parte superior y cada gota podrá tener un volumen diferente. Habrán varios barriles repartiendo gotas de cerveza al mismo tiempo. 
-El juego termina a los 30 segundos y mostrará que volumen de cerveza ha recogido el jugador. 
+La cerveza irá cayendo de la parte superior y cada gota podrá tener un volumen diferente. 
+El juego dura 30 segundos y transcurridos estos segundos, mostrará que volumen de cerveza ha recogido el jugador. 
+La duración el juego podrá cambiar dependiendo si el jugador ha recogido, además de cerveza, agua o bretzel. La primera restará 10 segundos y la segunda sumará este mismo tiempo a la duración de la partida. 
 
 
 
@@ -15,6 +16,9 @@ Transcurridos 30 segundos el juego finaliza y muestra el Score o volumen recogid
 
 
 ## Backlog
+Crear un volumen maximo de la jarra y cuando este ocurra que tenga, que tenga que coger otra jarra vacia.
+Que la cerveza caiga dibujando una onda. 
+
 ### game.js
  - BarrilBier
   - x

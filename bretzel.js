@@ -1,27 +1,27 @@
-function Water(canvas, x, y){
+function Bretzel(canvas, x, y){
   var self = this; 
 
   
   self.x = x; 
   self.y = y;
-  self.size = Math.floor(Math.random()*15)+5;
-  self.velocidad = 8;
+  self.size = Math.floor(Math.random()*30)+10;
+  self.velocidad = 10;
   self.color = 'red';
   self.ctx = canvas.getContext('2d');
   self.img = document.createElement('img');
-  self.img.src ='./images/gota-agua.png';
+  self.img.src ='./images/bretzel.png';
 
 
 }
 
-Water.prototype.update = function (){
+Bretzel.prototype.update = function (){
   var self = this; 
   self.y += self.velocidad;
   self.x = self.x;
 
 }
 
-Water.prototype.render = function (){
+Bretzel.prototype.render = function (){
   var self = this; 
 
   // self.ctx.fillStyle = self.color;
@@ -29,17 +29,7 @@ Water.prototype.render = function (){
   self.ctx.drawImage(self.img, self.x, self.y, self.size, self.size);
 }
 
-Water.prototype.waterOnTheFloor = function (){
+Bretzel.prototype.bretzelOnTheFloor = function (){
   var self = this; 
   return ((self.y + self.size) > self.ctx.canvas.height);
 }
-// Water.prototype.checkCollision = function (object){
-//   var self = this;
-  
-//   if (self.y === object.y + object.size){
-//     //&& ((self.x + self.size)>object.x)
-//     return true; 
-
-//   }
-//     return false;
-// }
