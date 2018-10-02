@@ -21,8 +21,8 @@ function main(){
     SplashElement = buildDom(`
     <main class="splash container">
       <h1 class="splash__title">Instrucciones</h1>
-      <p class="splash__instructions">Mueve al jugador
-      para recoger cerveza y bretzel, intenta evitar las gotas de agua</p>
+      <p class="splash__instructions">Tienes 30 segundos para conseguir la mayor cantidad posible de cerveza.
+      Si recoges gotas de agua perderás tiempo y si recoges bretzel lo aumentarás</p>
       <button>Start</button>
     </main>
     `);
@@ -69,6 +69,7 @@ function main(){
     gameOverElement = buildDom(`
     <main class="gameover container">
       <h1>Game over</h1>
+      <img src="./images/5a1d06ed526735.7194899815118517573375.png" alt="Game Over">
       <p>Litros conseguidos: <span class="score"></span></p>
       <button>Restart</button>
       </main>

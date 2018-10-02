@@ -15,7 +15,15 @@ body {
   
 }
 
-h1, h2, h3, h4, h5, h6, p{
+h1, h2, h3, h4, h5, h6{
+  font-family: 'MedievalSharp', cursive;
+  margin: 0;
+  padding: 0;
+  color: #920F15;
+  font-size: 2.3em;
+}
+
+p {
   font-family: 'MedievalSharp', cursive;
   margin: 0;
   padding: 0;
@@ -43,7 +51,7 @@ button{
 /* --- layout --- */
 
 #main-container {
-  padding-bottom: 80px;
+  padding-bottom: 30px;
   height: 100vh;
   display: flex;
   align-items: flex-end;
@@ -56,7 +64,9 @@ button{
 .container {
   padding: 10px 13px;
 }
-
+.splash.container{
+  background-color: rgba(255, 255, 255, 0.45);
+}
 @media (min-width: 768px) {
   .container {
     max-width: 728px;
@@ -94,3 +104,7 @@ button{
   background-color: rgba(255, 255, 255, 0.75);;
 }
 
+.gameover img{
+  height: 50%;
+  width: 50%;
+}

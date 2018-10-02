@@ -211,7 +211,7 @@ Game.prototype._spawnBier = function() {
 Game.prototype._spawnWater = function(){
   var self = this; 
 
-  if (Math.random()> 0.97){
+  if (Math.random()> 0.96){
     var randomWX = Math.random() * self.width * 0.8;
     self.water.push (new Water(self.canvasElement, randomWX, 0));
   }
