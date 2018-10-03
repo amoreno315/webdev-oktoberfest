@@ -103,10 +103,13 @@ function main(){
     }
     
       var rankingsHtmlOl = document.getElementById("ranking");
-      var user = '';
-      var scoreUser = '';
-      
-      for (var i = 0; i <= 9; i++){
+      // var user = '';
+      // var scoreUser = '';
+      var maxValoresArray = 9;
+      if (rankings.length <= 10){
+        maxValoresArray = rankings.length - 1;
+      }
+      for (var i = 0; i <= maxValoresArray; i++){
         var rankingLi = document.createElement('li');
         rankingLi.innerHTML= `
         <span class="user">${rankings[i].user}</span>
