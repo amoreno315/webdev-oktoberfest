@@ -27,7 +27,7 @@ p {
   font-family: 'MedievalSharp', cursive;
   margin: 0;
   padding: 0;
-  color: #E8212D;
+  color: #1a181b;
   font-size: 2em;
 }
 
@@ -35,6 +35,7 @@ span {
   font-family: 'MedievalSharp', cursive;
   font-size: 1.5em;
   margin: 10px;
+  color: #1a181b;
 }
 button{
   width: 150px;
@@ -51,7 +52,7 @@ button{
 /* --- layout --- */
 
 #main-container {
-  padding-bottom: 30px;
+  
   height: 100vh;
   display: flex;
   align-items: flex-end;
@@ -66,6 +67,7 @@ button{
 }
 .splash.container{
   background-color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 30px;
 }
 @media (min-width: 768px) {
   .container {
@@ -103,8 +105,31 @@ button{
   height: 100%;
   background-color: rgba(255, 255, 255, 0.75);;
 }
-
+.gameOverDown {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+.gameOverUp, .gameOverDown {
+  
+  width: 50%;
+}
+.gameover.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-self: center;
+  text-align: center;
+  justify-content: center;
+}
 .gameover img{
   height: 50%;
   width: 50%;
+}
+#ranking {
+ 
+  height: 300px;
+  overflow: scroll;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  list-style: none;
 }

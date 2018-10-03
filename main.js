@@ -65,13 +65,55 @@ function main(){
     buildSplash();
   }
 
+  function saveNameScore(score){
+    var user = prompt ("Introduce tu nombre: ");
+    var currentScore = [];
+    if (localStorage.getItem("rankings") !== null){
+      currentScore = JSON.parse(localStorage.getItem("rankings"));
+    }
+    currentScore.push({user:user, score:score});
+    currentScore.sort(function(objA, objB){
+      return objB.score - objA.score;
+    });
+    localStorage.setItem("rankings", JSON.stringify(currentScore));
+
+  }
+  function renderRankins(){
+    var rankings= [];
+    if (localStorage.getItem("rankings") !== null){
+      rankings = JSON.parse(localStorage.getItem("rankings"));
+    }
+    
+      var rankingsHtmlOl = document.getElementById("ranking");
+      var user = '';
+      var scoreUser = '';
+      
+      rankings.forEach(function (element) {
+        var rankingLi = document.createElement('li');
+        rankingLi.innerHTML= `
+        <span class="user">${element.user}</span>
+        <span class="scoreUser">${element.score}</span>`
+        rankingsHtmlOl.appendChild(rankingLi);
+      });
+      
+    
+  }
+
   function buildGameOver(score){
     gameOverElement = buildDom(`
     <main class="gameover container">
-      <h1>Game over</h1>
-      <img src="./images/5a1d06ed526735.7194899815118517573375.png" alt="Game Over">
-      <p>Litros conseguidos: <span class="score"></span></p>
-      <button>Restart</button>
+      <div class="gameOverUp">
+        <h1>Game over</h1>
+        <img src="./images/5a1d06ed526735.7194899815118517573375.png" alt="Game Over">
+        <p>Litros conseguidos: <span class="score"></span></p>
+      </div>
+      <div class="gameOverDown">
+        <h2>High Score</h2>
+        <ol id="ranking"></ol>
+      </div>
+      <div class="restart">
+        <button>Restart</button>
+      </div>
       </main>
     `);
     mainContainerElement.appendChild(gameOverElement);
@@ -81,7 +123,8 @@ function main(){
 
     var scoreElement = document.querySelector('.score');
     scoreElement.innerText = score;
-
+    saveNameScore(score);
+    renderRankins();
   }
   function destroyGameOver(){
     gameOverButton.removeEventListener('click', handleGameOverClick);

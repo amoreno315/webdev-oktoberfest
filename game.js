@@ -204,7 +204,7 @@ Game.prototype._spawnBier = function() {
   if (Math.random() > 0.95){
     var randomX = Math.random() * self.width * 0.8;
     self.bier.push(new Bier(self.canvasElement, randomX, 0));
-    console.log(self.bier);
+    //console.log(self.bier);
   }
 
 }
