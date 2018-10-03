@@ -152,7 +152,7 @@ Game.prototype._updateAll = function (){
   //borrar cerveza cuando se sale del canvas
   self.bier = self.bier.filter(function(item){
     if(item.onTheFloor()){
-      console.log ('borra');
+      //console.log ('borra');
       return false;
     }
     return true;
