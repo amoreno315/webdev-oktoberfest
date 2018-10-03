@@ -151,7 +151,6 @@ button{
 }
 @media (max-width: 768px) {
   .touch-buttons {
-    display: block;
     position: absolute;
     width: 100%;
     height: 100%;
