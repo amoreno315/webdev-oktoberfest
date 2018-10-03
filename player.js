@@ -57,7 +57,7 @@ Player.prototype.fullJarra = function (){
 
 Player.prototype.checkCollision = function (object){
   var self = this;
-  console.log(object.y)
+  //console.log(object.y)
   var collTop = self.y < object.y + object.size;
   var collLeft = object.x > self.x;
   var collRight = object.x < self.x + self.size;

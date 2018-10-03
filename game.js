@@ -28,8 +28,12 @@ Game.prototype._init = function(){
       <div class="game__canvas">
         <canvas class="canvas"></canvas>
       </div>
+      <audio src="./music/main-theme.mp3"
+       autoplay></audio>
     </main>
   `)
+  //self.gameTheme.play();
+  
   self.parentElement.appendChild(self.gameElement);
 
   self.canvasParentElement = document.querySelector('.game__canvas');
@@ -104,7 +108,9 @@ Game.prototype._startLoop = function(){
   }
 
   document.addEventListener('keydown', self.handleKeyDown);
+  
  
+  
 
   function loop(){
     self._clearAll();
