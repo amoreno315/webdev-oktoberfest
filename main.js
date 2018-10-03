@@ -78,6 +78,24 @@ function main(){
     localStorage.setItem("rankings", JSON.stringify(currentScore));
 
   }
+  // function renderRankins(){
+  //   var rankings= [];
+  //   if (localStorage.getItem("rankings") !== null){
+  //     rankings = JSON.parse(localStorage.getItem("rankings"));
+  //   }
+    
+  //     var rankingsHtmlOl = document.getElementById("ranking");
+  //     var user = '';
+  //     var scoreUser = '';
+      
+  //     rankings.forEach(function (element) {
+  //       var rankingLi = document.createElement('li');
+  //       rankingLi.innerHTML= `
+  //       <span class="user">${element.user}</span>
+  //       <span class="scoreUser">${element.score}</span>`
+  //       rankingsHtmlOl.appendChild(rankingLi);
+  //     });
+  // }
   function renderRankins(){
     var rankings= [];
     if (localStorage.getItem("rankings") !== null){
@@ -88,15 +106,14 @@ function main(){
       var user = '';
       var scoreUser = '';
       
-      rankings.forEach(function (element) {
+      for (var i = 0; i <= 9; i++){
         var rankingLi = document.createElement('li');
         rankingLi.innerHTML= `
-        <span class="user">${element.user}</span>
-        <span class="scoreUser">${element.score}</span>`
+        <span class="user">${rankings[i].user}</span>
+        <span class="scoreUser">${rankings[i].score}</span>`
         rankingsHtmlOl.appendChild(rankingLi);
-      });
+      }
       
-    
   }
 
   function buildGameOver(score){

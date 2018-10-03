@@ -105,7 +105,15 @@ button{
   height: 100%;
   background-color: rgba(255, 255, 255, 0.75);;
 }
+
+.gameOverUp {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+}
 .gameOverDown {
+  padding-top: 5px;
   background-color: rgba(255, 255, 255, 0.45);
 }
 .gameOverUp, .gameOverDown {
@@ -119,6 +127,7 @@ button{
   align-self: center;
   text-align: center;
   justify-content: center;
+  align-items: stretch;
 }
 .gameover img{
   height: 50%;
@@ -126,10 +135,14 @@ button{
 }
 #ranking {
  
-  height: 300px;
+  height: 275px;
   overflow: scroll;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 0px;
   list-style: none;
+}
+
+.restart {
+  padding-top: 20px;
 }
