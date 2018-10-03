@@ -112,6 +112,7 @@ button{
   align-items: center;
   justify-content: space-between;
   padding-top: 5px;
+  background-color: rgba(255, 255, 255, 0.45);
 }
 .gameOverDown {
   padding-top: 5px;

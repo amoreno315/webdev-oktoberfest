@@ -4,7 +4,7 @@ function Bretzel(canvas, x, y){
   
   self.x = x; 
   self.y = y;
-  self.size = Math.floor(Math.random()*30)+10;
+  self.size = Math.floor(Math.random()*30)+20;
   self.velocidad = 10;
   self.color = 'red';
   self.ctx = canvas.getContext('2d');

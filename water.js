@@ -4,7 +4,7 @@ function Water(canvas, x, y){
   
   self.x = x; 
   self.y = y;
-  self.size = Math.floor(Math.random()*15)+5;
+  self.size = Math.floor(Math.random()*15)+10;
   self.velocidad = 8;
   self.color = 'red';
   self.ctx = canvas.getContext('2d');

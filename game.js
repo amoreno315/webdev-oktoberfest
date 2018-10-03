@@ -208,7 +208,7 @@ Game.prototype._spawnBier = function() {
   var self = this;
 
   if (Math.random() > 0.95){
-    var randomX = Math.random() * self.width * 0.8;
+    var randomX = Math.random() * self.width * 0.9;
     self.bier.push(new Bier(self.canvasElement, randomX, 0));
     //console.log(self.bier);
   }
@@ -227,7 +227,7 @@ Game.prototype._spawnBretzel = function(){
   var self = this;
 
   if (Math.random()>0.995){
-    var randomBX = Math.random() * self.width * 0.8;
+    var randomBX = Math.random() * self.width * 0.9;
     self.bretzel.push (new Bretzel(self.canvasElement, randomBX, 0));
   }
 }
