@@ -29,7 +29,12 @@ Game.prototype._init = function(){
         <canvas class="canvas"></canvas>
       </div>
       <audio src="./music/main-theme.mp3"
-       autoplay></audio>
+        autoplay>
+      </audio>
+      <div class='touch-buttons'>
+        <div class="button-left"></div>
+        <div class="button-right"></div>
+     </div>
     </main>
   `)
   //self.gameTheme.play();
@@ -51,6 +56,9 @@ Game.prototype._init = function(){
   self.canvasElement.setAttribute('height', self.height);
 
   self.ctx = self.canvasElement.getContext('2d');
+
+  self.leftButton = document.querySelector('.button-left');
+  self.rightButton = document.querySelector('.button-right');
 
 
   //idea Backlog: aumentar/disminuir tiempo de juego.
@@ -83,7 +91,7 @@ Game.prototype._startLoop = function(){
   self.water = [];
   self.bretzel = [];
   //inicializar contador, tiempo de juego
-  self.counter = 30;
+  self.counter = 45;
 
   self.countDown = function (sec) {
     self.counter -= sec;
@@ -109,7 +117,21 @@ Game.prototype._startLoop = function(){
 
   document.addEventListener('keydown', self.handleKeyDown);
   
+  // movil 
+  
+  self._goLeft = function() {
+    self.player.moveLeft();
+    self.player.update();
+  }
  
+  self.leftButton.addEventListener('touchstart',self._goLeft)
+ 
+  self._goRight = function() {
+    self.player.moveRight();
+      self.player.update();
+  }
+ 
+  self.rightButton.addEventListener('touchstart',self._goRight)
   
 
   function loop(){

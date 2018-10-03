@@ -21,7 +21,7 @@ function main(){
     SplashElement = buildDom(`
     <main class="splash container">
       <h1 class="splash__title">Instrucciones</h1>
-      <p class="splash__instructions">Tienes 30 segundos para conseguir la mayor cantidad posible de cerveza.
+      <p class="splash__instructions">Tienes 45 segundos para conseguir la mayor cantidad posible de cerveza.
       Si recoges gotas de agua perderás tiempo y si recoges bretzel lo aumentarás</p>
       <button>Start</button>
     </main>

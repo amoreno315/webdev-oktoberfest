@@ -148,16 +148,22 @@ button{
 .restart {
   padding-top: 20px;
 }
-
-/* .touch-buttons {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 50px;
+@media (max-width: 780px) {
+  .touch-buttons {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+  .button-left, .button-right{
+    width: 30%;
+    height: 100%;
+  }
 }
-.button-left, .button-right{
-  width: 30%;
-  height: 100%; */
+.touch-buttons{
+  display: none;
+}
