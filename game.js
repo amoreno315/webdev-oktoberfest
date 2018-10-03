@@ -26,15 +26,18 @@ Game.prototype._init = function(){
         </div>
       </header>
       <div class="game__canvas">
-        <canvas class="canvas"></canvas>
-      </div>
+        <canvas class="canvas">
+        </canvas>
+        <div class="touch-buttons">
+          <div class="button-left"></div>
+          <div class="button-right"></div>
+          </div>
+     </div>
+      
       <audio src="./music/main-theme.mp3"
         autoplay>
       </audio>
-      <div class='touch-buttons'>
-        <div class="button-left"></div>
-        <div class="button-right"></div>
-     </div>
+      
     </main>
   `)
   //self.gameTheme.play();
