@@ -22,7 +22,7 @@ Game.prototype._init = function(){
         <div class="score">
           <span class="label">Score:</span>
           <span class="value"></span>
-          <span class="value">Litros</span>
+          <span class="value">Liter</span>
         </div>
       </header>
       <div class="game__canvas">
