@@ -141,4 +141,4 @@ URls for the project presentation (slides)
 
 ### Game
 URL for the game
-[Link to Game] (https://slides.com/anamoreno-3/deck/fullscreen)
+(https://amoreno315.github.io/webdev-oktoberfest/)
