@@ -125,7 +125,7 @@ function main(){
       <div class="gameOverUp">
         <h1>Game over</h1>
         <img src="./images/5a1d06ed526735.7194899815118517573375.png" alt="Game Over">
-        <p>Litros conseguidos: <span class="score"></span></p>
+        <p>Liters collected: <span class="score"></span></p>
       </div>
       <div class="gameOverDown">
         <h2>High Score</h2>
