@@ -20,9 +20,9 @@ function main(){
   function buildSplash(){
     SplashElement = buildDom(`
     <main class="splash container">
-      <h1 class="splash__title">Instrucciones</h1>
-      <p class="splash__instructions">Tienes 45 segundos para conseguir la mayor cantidad posible de cerveza.
-      Si recoges gotas de agua perderás tiempo y si recoges bretzel lo aumentarás</p>
+      <h1 class="splash__title">Instructions</h1>
+      <p class="splash__instructions">You have 45 seconds to get as much beer as possible.
+      If you collect drops of water you will lose time and if you collect bretzel you will increase it</p>
       <button>Start</button>
     </main>
     `);
@@ -66,7 +66,7 @@ function main(){
   }
 
   function saveNameScore(score){
-    var user = prompt ("Introduce tu nombre: ");
+    var user = prompt ("Write your name: ");
     var currentScore = [];
     if (localStorage.getItem("rankings") !== null){
       currentScore = JSON.parse(localStorage.getItem("rankings"));
